@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
 
     private Text levelText;
     private GameObject levelImage;
-    private int level = 1;
+    private GameObject startImage;
+    private int level = 0;
     private List<Enemy> enemies;
     private bool enemiesMoving;
     private bool doingSetup;
@@ -45,14 +46,20 @@ public class GameManager : MonoBehaviour
     {
         doingSetup = true;
 
-        levelImage = GameObject.Find("LevelImage");
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
-        levelText.text = "Day " + level;
-        levelImage.SetActive(true);
-        Invoke("HideLevelImage", levelStartDelay);
+        startImage = GameObject.Find("StartImage");
 
-        enemies.Clear();
-        boardScript.SetupScene(level);
+        if (level > 0)
+        {
+            levelImage = GameObject.Find("LevelImage");
+            levelText = GameObject.Find("LevelText").GetComponent<Text>();
+            levelText.text = "Day " + level;
+            levelImage.SetActive(true);
+            Invoke("HideLevelImage", levelStartDelay);
+
+            enemies.Clear();
+            boardScript.SetupScene(level);
+            startImage.SetActive(false);
+        }
     }
 
     private void HideLevelImage()
@@ -71,6 +78,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (level == 0)
+        {
+            startImage.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+        }
+
+
         if (playersTurn || enemiesMoving || doingSetup)
             return;
 
