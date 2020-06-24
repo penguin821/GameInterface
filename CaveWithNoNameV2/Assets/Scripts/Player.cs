@@ -10,6 +10,7 @@ public class Player : MovingObject
     public int pointsPerBattery = 10;
     public int pointsPerSoda = 20;
     public float restartLevelDelay = 1f;
+    public int clickCount = 0;
 
     public Text foodText;
     public Text BatteryText;
@@ -23,6 +24,13 @@ public class Player : MovingObject
 
     public Slider FoodSlider;
     public Slider BatterSlider;
+
+    //private GameObject chat1;
+    //private GameObject chat2;
+    //private GameObject chat3;
+    //private GameObject chat4;
+    //private GameObject chat5;
+    //private GameObject chat6;
 
     private GameObject flashlight;
     private Quaternion rotation;
@@ -44,6 +52,19 @@ public class Player : MovingObject
 
         FoodSlider.value = food;
         BatterSlider.value = battery;
+
+        //chat1 = GameObject.Find("Chat1");
+        //chat1.SetActive(false);
+        //chat2 = GameObject.Find("Chat2");
+        //chat2.SetActive(false);
+        //chat3 = GameObject.Find("Chat3");
+        //chat3.SetActive(false);
+        //chat4 = GameObject.Find("Chat4");
+        //chat4.SetActive(false);
+        //chat5 = GameObject.Find("Chat5");
+        //chat5.SetActive(false);
+        //chat6 = GameObject.Find("Chat6");
+        //chat6.SetActive(false);
 
         foodText.text = "Food: " + food;
         BatteryText.text = "Battery: " + battery;
@@ -106,7 +127,7 @@ public class Player : MovingObject
             rotation = Quaternion.Euler(0, 0, 0);
             flashlight.transform.rotation = rotation;
         }
-
+        clickCount++;
         food--;
         battery--;
         lightScaleX -= 0.05f;
@@ -122,6 +143,11 @@ public class Player : MovingObject
 
         FoodSlider.value = food;
         BatterSlider.value = battery;
+
+        //if (clickCount / 5 == 0)
+        //{
+
+        //}
 
         foodText.text = "Food: " + food;
         BatteryText.text = "Battery: " + battery;
