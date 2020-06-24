@@ -30,7 +30,7 @@ public class Player : MovingObject
     private Animator animator;
     private int food;
     private int battery;
-    private float lightScaleX = 3.5f, lightScaleY = 7f, lightScaleZ = 7f;
+    private float lightScaleX = 4.5f, lightScaleY = 7f, lightScaleZ = 7f; // 5.5 8 8
 
     protected override void Start()
     {
@@ -110,8 +110,14 @@ public class Player : MovingObject
         food--;
         battery--;
         lightScaleX -= 0.05f;
+        if (lightScaleX < 1f)
+            lightScaleX = 1f;
         lightScaleY -= 0.05f;
+        if (lightScaleY < 2f)
+            lightScaleY = 2f;
         lightScaleZ -= 0.05f;
+        if (lightScaleZ < 2f)
+            lightScaleZ = 2f;
         flashlight.transform.localScale = new Vector3(lightScaleX, lightScaleY, lightScaleZ);
 
         FoodSlider.value = food;
@@ -135,7 +141,7 @@ public class Player : MovingObject
 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void Collision(Collider2D other)
     {
         if (other.tag == "Exit")
         {
