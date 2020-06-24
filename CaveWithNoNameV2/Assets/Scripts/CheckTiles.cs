@@ -91,7 +91,7 @@ public class CheckTiles : MonoBehaviour
         else if (other.tag == "Wall")
         {
             r = 1f;
-            g = 1f;
+            g = 0.5f;
             b = 0f;
             z = 0.2f;
             checkTile.color = new Color(r, g, b, z);

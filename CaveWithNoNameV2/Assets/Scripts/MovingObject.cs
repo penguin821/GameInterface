@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class MovingObject : MonoBehaviour
 {
-    public float moveTime = 0.1f;
+    public float moveTime = 0.03f;
     public LayerMask blockingLayer;
 
     private BoxCollider2D boxCollider;
