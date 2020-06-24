@@ -12,6 +12,7 @@ public class Player : MovingObject
     public float restartLevelDelay = 1f;
 
     public Text foodText;
+    public Text BatteryText;
     public AudioClip moveSound1;
     public AudioClip moveSound2;
     public AudioClip eatSound1;
@@ -45,6 +46,7 @@ public class Player : MovingObject
         BatterSlider.value = battery;
 
         foodText.text = "Food: " + food;
+        BatteryText.text = "Battery: " + battery;
 
         base.Start();
     }
@@ -116,6 +118,7 @@ public class Player : MovingObject
         BatterSlider.value = battery;
 
         foodText.text = "Food: " + food;
+        BatteryText.text = "Battery: " + battery;
 
         base.AttempMove<T>(xDir, yDir);
 
@@ -132,7 +135,7 @@ public class Player : MovingObject
 
     }
 
-    public void Collision(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Exit")
         {
@@ -165,6 +168,7 @@ public class Player : MovingObject
             if (battery > 200)
                 battery = 200;
             BatterSlider.value = battery;
+            BatteryText.text = "+" + pointsPerBattery + " Battery: " + battery;
             lightScaleX += 0.15f;
             lightScaleY += 0.15f;
             lightScaleZ += 0.15f;

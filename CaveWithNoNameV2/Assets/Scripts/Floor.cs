@@ -15,56 +15,56 @@ public class Floor : MonoBehaviour
 
     void Update()
     {
-        //if (true)
-        //{
-        //    RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0.0001f, 0.0f), 0.0001f);
-        //    if (hit)
-        //    {
-        //        if (hit.collider.gameObject.tag == "Soda")
-        //        {
-        //            collider.enabled = false;
-        //        }
-        //        if (hit.collider.gameObject.tag == "Exit")
-        //        {
-        //            collider.enabled = false;
-        //        }
-        //        if (hit.collider.gameObject.tag == "Battery")
-        //        {
-        //            collider.enabled = false;
-        //        }
-        //        if (hit.collider.gameObject.tag == "Food")
-        //        {
-        //            collider.enabled = false;
-        //        }
-        //        if (hit.collider.gameObject.tag == "Wall")
-        //        {
-        //            collider.enabled = false;
-        //        }
-        //    }
-        //}
+        if (true)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0.0001f, 0.0f), 0.0001f);
+            if (hit)
+            {
+                if (hit.collider.gameObject.tag == "Soda")
+                {
+                    collider.enabled = false;
+                }
+                else if (hit.collider.gameObject.tag == "Exit")
+                {
+                    collider.enabled = false;
+                }
+                else if (hit.collider.gameObject.tag == "Food")
+                {
+                    collider.enabled = false;
+                }
+                else if (hit.collider.gameObject.tag == "Wall")
+                {
+                    collider.enabled = false;
+                }
+                else if (hit.collider.gameObject.tag == "Battery")
+                {
+                    collider.enabled = false;
+                }
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        //if (other.tag == "Exit")
-        //{
-        //    collider.enabled = true;
-        //}
-        //if (other.tag == "Soda")
-        //{
-        //    collider.enabled = true;
-        //}
-        //if (other.tag == "Food")
-        //{
-        //    collider.enabled = true;
-        //}
-        //if (other.tag == "Wall")
-        //{
-        //    collider.enabled = true;
-        //}
-        //if (other.tag == "Battery")
-        //{
-        //    collider.enabled = true;
-        //}
+        if (other.tag == "Exit")
+        {
+            collider.enabled = true;
+        }
+        if (other.tag == "Soda")
+        {
+            collider.enabled = true;
+        }
+        if (other.tag == "Food")
+        {
+            collider.enabled = true;
+        }
+        if (other.tag == "Wall")
+        {
+            collider.enabled = true;
+        }
+        if (other.tag == "Battery")
+        {
+            collider.enabled = true;
+        }
     }
 }
