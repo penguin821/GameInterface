@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Player : MovingObject
@@ -131,7 +132,7 @@ public class Player : MovingObject
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Collision(Collider2D other)
     {
         if (other.tag == "Exit")
         {

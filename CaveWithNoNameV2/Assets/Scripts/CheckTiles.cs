@@ -112,7 +112,7 @@ public class CheckTiles : MonoBehaviour
             z = 0.2f;
             checkTile.color = new Color(r, g, b, z);
         }
-        else if (other.tag == "Untagged")
+        else if (other.tag == "Floor")
         {
             r = 1f;
             g = 1f;
