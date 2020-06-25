@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Wall : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Wall : MonoBehaviour
         spriteRenderer.sprite = dmgSprite;
         hp -= loss;
         if (hp <= 0)
+        {
             gameObject.SetActive(false);
+        }
     }
 }

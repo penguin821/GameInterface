@@ -25,9 +25,9 @@ public class Player : MovingObject
     public Slider FoodSlider;
     public Slider BatterSlider;
 
-    //private GameObject chat1;
-    //private GameObject chat2;
-    //private GameObject chat3;
+    private GameObject chat1;
+    private GameObject chat2;
+    private GameObject chat3;
     //private GameObject chat4;
     //private GameObject chat5;
     //private GameObject chat6;
@@ -53,12 +53,12 @@ public class Player : MovingObject
         FoodSlider.value = food;
         BatterSlider.value = battery;
 
-        //chat1 = GameObject.Find("Chat1");
-        //chat1.SetActive(false);
-        //chat2 = GameObject.Find("Chat2");
-        //chat2.SetActive(false);
-        //chat3 = GameObject.Find("Chat3");
-        //chat3.SetActive(false);
+        chat1 = GameObject.Find("Chat1");
+        chat1.SetActive(false);
+        chat2 = GameObject.Find("Chat2");
+        chat2.SetActive(false);
+        chat3 = GameObject.Find("Chat3");
+        chat3.SetActive(false);
         //chat4 = GameObject.Find("Chat4");
         //chat4.SetActive(false);
         //chat5 = GameObject.Find("Chat5");
@@ -96,6 +96,9 @@ public class Player : MovingObject
 
         // 오브젝트에 따른 HP Bar 위치 이동
         flashlight.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        chat1.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.3f, 1f, 0));
+        chat2.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.3f, 1f, 0));
+        chat3.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.3f, 1f, 0));
 
 
         if (horizontal != 0)
@@ -144,10 +147,24 @@ public class Player : MovingObject
         FoodSlider.value = food;
         BatterSlider.value = battery;
 
-        //if (clickCount / 5 == 0)
-        //{
-
-        //}
+        if (clickCount % 5 == 0)
+        {
+            chat1.SetActive(true);
+        }
+        else if (clickCount % 7 == 0)
+        {
+            chat2.SetActive(true);
+        }
+        else if (clickCount % 11 == 0)
+        {
+            chat3.SetActive(true);
+        }
+        else
+        {
+            chat1.SetActive(false);
+            chat2.SetActive(false);
+            chat3.SetActive(false);
+        }
 
         foodText.text = "Food: " + food;
         BatteryText.text = "Battery: " + battery;
@@ -161,7 +178,7 @@ public class Player : MovingObject
         }
 
 
-        CheckIfGameOver();
+        //CheckIfGameOver();
 
         GameManager.instance.playersTurn = false;
 
@@ -232,16 +249,16 @@ public class Player : MovingObject
         FoodSlider.value -= loss;
 
         foodText.text = "-" + loss + " Food: " + food;
-        CheckIfGameOver();
+        //CheckIfGameOver();
     }
 
-    private void CheckIfGameOver()
-    {
-        if (food <= 0 || battery <= 0)
-        {
-            SoundManager.instance.PlaySingle(gameOverSound);
-            SoundManager.instance.musicSource.Stop();
-            GameManager.instance.GameOver();
-        }
-    }
+    //private void CheckIfGameOver()
+    //{
+    //    if (food <= 0 || battery <= 0)
+    //    {
+    //        SoundManager.instance.PlaySingle(gameOverSound);
+    //        SoundManager.instance.musicSource.Stop();
+    //        GameManager.instance.GameOver();
+    //    }
+    //}
 }

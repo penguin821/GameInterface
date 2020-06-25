@@ -1,5 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-Editor.dll:
+    - ReadmeEditor
     Assembly-CSharp.dll:
     - BoardManager
     - CheckTiles
@@ -9,6 +11,7 @@ ScriptsOnlyBuild:
     - Loader
     - Player
     - PlayerCollision
+    - Readme
     - SoundManager
     - Wall
     Unity.2D.Animation.Editor.dll:
